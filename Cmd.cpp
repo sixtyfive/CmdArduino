@@ -55,9 +55,8 @@ static uint8_t *msg_ptr;
 static cmd_t *cmd_tbl_list, *cmd_tbl;
 
 // text strings for command prompt (stored in flash)
-const char cmd_banner[] PROGMEM = "*************** CMD *******************";
-const char cmd_prompt[] PROGMEM = "CMD >> ";
-const char cmd_unrecog[] PROGMEM = "CMD: Command not recognized.";
+const char cmd_prompt[] PROGMEM = "> ";
+const char cmd_unrecog[] PROGMEM = "Error: no such command";
 
 static Stream* stream;
 
@@ -69,12 +68,6 @@ static Stream* stream;
 void cmd_display()
 {
     char buf[50];
-
-    stream->println();
-
-    strcpy_P(buf, cmd_banner);
-    stream->println(buf);
-
     strcpy_P(buf, cmd_prompt);
     stream->print(buf);
 }

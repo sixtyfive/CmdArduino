@@ -31,13 +31,7 @@
     Please post support questions to the FreakLabs forum.
 
 *******************************************************************/
-/*!
-    \file
-    \ingroup
 
-
-*/
-/**************************************************************************/
 #ifndef CMD_H
 #define CMD_H
 
@@ -58,4 +52,4 @@ void cmdAdd(const char *name, void (*func)(int argc, char **argv));
 Stream* cmdGetStream(void);
 uint32_t cmdStr2Num(char *str, uint8_t base);
 
-#endif //CMD_H
+#endif // CMD_H

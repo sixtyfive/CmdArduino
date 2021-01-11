@@ -103,7 +103,7 @@ void cmd_parse(char *cmd)
     // actual command name typed in at the prompt
     for (cmd_entry = cmd_tbl; cmd_entry != NULL; cmd_entry = cmd_entry->next)
     {
-        if (!strcmp(argv[0], cmd_entry->cmd))
+        if (!strcmp(argv[0], cmd_entry->cmd) || !strcmp(argv[0], cmd_entry->shortname))
         {
             cmd_entry->func(argc, argv);
             cmd_display();
@@ -200,22 +200,26 @@ void cmdInit(Stream *str)
     at the setup() portion of the sketch.
 */
 /**************************************************************************/
-void cmdAdd(const char *name, void (*func)(int argc, char **argv))
+void cmdAdd(const char *name, const char *shortname, void (*func)(int argc, char **argv))
 {
     // alloc memory for command struct
     cmd_tbl = (cmd_t *)malloc(sizeof(cmd_t));
 
     // alloc memory for command name
     char *cmd_name = (char *)malloc(strlen(name)+1);
+    char *cmd_shortname = (char *)malloc(strlen(shortname)+1);
 
     // copy command name
     strcpy(cmd_name, name);
+    strcpy(cmd_shortname, shortname);
 
     // terminate the command name
     cmd_name[strlen(name)] = '\0';
+    cmd_shortname[strlen(shortname)] = '\0';
 
     // fill out structure
     cmd_tbl->cmd = cmd_name;
+    cmd_tbl->shortname = cmd_shortname;
     cmd_tbl->func = func;
     cmd_tbl->next = cmd_tbl_list;
     cmd_tbl_list = cmd_tbl;

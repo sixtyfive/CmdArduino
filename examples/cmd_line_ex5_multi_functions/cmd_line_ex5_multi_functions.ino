@@ -29,10 +29,10 @@ void setup()
   //
   // arg_cnt is the number of arguments typed into the command line
   // args is a list of argument strings that were typed into the command line
-  cmdAdd("hello", hello);
-  cmdAdd("args", arg_display);
-  cmdAdd("blink", led_blink);
-  cmdAdd("pwm", led_pwm);
+  cmdAdd("hello", "h", hello);
+  cmdAdd("args", "d", arg_display);
+  cmdAdd("blink", "b", led_blink);
+  cmdAdd("pwm", "p", led_pwm);
   
 }
 

@@ -25,7 +25,7 @@ void setup()
   //
   // arg_cnt is the number of arguments typed into the command line
   // args is a list of argument strings that were typed into the command line
-  cmdAdd("pwm", led_pwm);
+  cmdAdd("pwm", "p", led_pwm);
 }
 
 void loop()

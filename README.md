@@ -20,12 +20,12 @@ void right(int arg_cnt, char **args) {
 void setup() {
     Serial.begin(9600);
     cmdInit(&Serial);
-    cmdAdd('left',left);
-    cmdAdd('right',right);
+    cmdAdd('left', 'l', left);
+    cmdAdd('right', 'r', right);
 }
 ```
 
-Call `cmdInit` with a pointer to the stream you are using. Call `cmdAdd` to attach a string command to the command function.  Now you can type `left` or `right` into your serial port to command the robot.  The serial port will be parsed using newline, `\n`, as the delimiter. The command name should be the first item and any arguments after that.  For example, to tell the robot to turn left for three seconds, type in:
+Call `cmdInit` with a pointer to the stream you are using. Call `cmdAdd` to attach a string command (long name as well as short name) to the command function.  Now you can type `left` or `right` (or `l` or `r`) into your serial port to command the robot.  The serial port will be parsed using newline, `\n`, as the delimiter. The command name should be the first item and any arguments after that.  For example, to tell the robot to turn left for three seconds, type in:
 
 ```
 left 3000\n

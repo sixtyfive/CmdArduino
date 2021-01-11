@@ -20,7 +20,7 @@ void setup()
   //
   // arg_cnt is the number of arguments typed into the command line
   // args is a list of argument strings that were typed into the command line
-  cmdAdd("hello", hello);
+  cmdAdd("hello", "h", hello);
 }
 
 void loop()

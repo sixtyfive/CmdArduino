@@ -31,13 +31,7 @@
     Please post support questions to the FreakLabs forum.
 
 *******************************************************************/
-/*!
-    \file
-    \ingroup
 
-
-*/
-/**************************************************************************/
 #ifndef CMD_H
 #define CMD_H
 
@@ -48,14 +42,15 @@
 typedef struct _cmd_t
 {
     char *cmd;
+    char *shortname;
     void (*func)(int argc, char **argv);
     struct _cmd_t *next;
 } cmd_t;
 
 void cmdInit(Stream *);
 void cmdPoll();
-void cmdAdd(const char *name, void (*func)(int argc, char **argv));
+void cmdAdd(const char *name, const char *shortname, void (*func)(int argc, char **argv));
 Stream* cmdGetStream(void);
 uint32_t cmdStr2Num(char *str, uint8_t base);
 
-#endif //CMD_H
+#endif // CMD_H
